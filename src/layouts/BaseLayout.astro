@@ -9,7 +9,6 @@ const {
   title = 'Abdul Rafi — Software, Robotics & AI',
   description = 'Portfolio of Abdul Rafi, a Computer Science and Engineering undergraduate building reliable software and autonomous systems.',
 } = Astro.props;
-const base = import.meta.env.BASE_URL;
 const path = Astro.url.pathname;
 ---
 <!doctype html>
@@ -37,20 +36,20 @@ const path = Astro.url.pathname;
     </div>
 
     <header class="site-header" data-header>
-      <a class="brand" href={base} aria-label="Abdul Rafi — home">
+      <a class="brand" href="/" aria-label="Abdul Rafi — home">
         <img src="/images/My_Logo.svg" alt="Abdul Rafi" class="brand-img" width="52" height="52" />
       </a>
       <nav class="desktop-nav" aria-label="Primary navigation">
-        <a class:list={{ active: path === base || path === base.slice(0, -1) }} href={base}>Home</a>
-        <a class:list={{ active: path.startsWith(`${base}projects`) }} href={`${base}projects`}>Projects</a>
-        <a class:list={{ active: path.startsWith(`${base}cv`) }} href={`${base}cv`}>CV</a>
-        <a href={`${base}#contact`}>Contact</a>
+        <a class:list={{ active: path === '/' }} href="/">Home</a>
+        <a class:list={{ active: path.startsWith('/projects') }} href="/projects">Projects</a>
+        <a class:list={{ active: path.startsWith('/cv') }} href="/cv">CV</a>
+        <a href="/#contact">Contact</a>
       </nav>
       <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle>
         <span class="menu-open"><Icon name="menu" /></span><span class="menu-close"><Icon name="close" /></span>
       </button>
       <nav class="mobile-nav" aria-label="Mobile navigation" data-mobile-nav>
-        <a href={base}>Home</a><a href={`${base}projects`}>Projects</a><a href={`${base}cv`}>CV</a><a href={`${base}#contact`}>Contact</a>
+        <a href="/">Home</a><a href="/projects">Projects</a><a href="/cv">CV</a><a href="/#contact">Contact</a>
       </nav>
     </header>
     <main><slot /></main>

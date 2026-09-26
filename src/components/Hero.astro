@@ -1,6 +1,5 @@
 ---
 import Icon from './Icon.astro';
-const base = import.meta.env.BASE_URL;
 ---
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-dark"></div>
@@ -13,7 +12,7 @@ const base = import.meta.env.BASE_URL;
       <p class="role-line"><span data-role>Software Engineer</span> <span aria-hidden="true">↗</span></p>
       <div class="hero-actions">
         <a class="button dark" href="#projects">Explore projects <Icon name="arrow" size={17} /></a>
-        <a class="button light" href={`${base}cv`}>View CV</a>
+        <a class="button light" href="/cv">View CV</a>
       </div>
       <div class="socials" aria-label="Social links">
         <a class="social-link" href="mailto:abdulr.23@cse.mrt.ac.lk" aria-label="Email Abdul"><Icon name="mail" /></a>
