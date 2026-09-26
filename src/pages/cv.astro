@@ -2,43 +2,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 ---
-<BaseLayout title="Curriculum Vitae — Abdul Rafi" description="View Abdul Rafi's software engineering and robotics curriculum vitae.">
-  <section class="page-hero">
+<BaseLayout title="Curriculum Vitae — Abdul Rafi" description="View and download Abdul Rafi's curriculum vitae.">
+  <section class="simple-page">
     <div class="shell">
-      <p class="eyebrow">Curriculum vitae · Two perspectives</p>
-      <h1>The same engineer.<br />Two lenses.</h1>
-      <p>Choose the profile closest to your opportunity. The software edition is available to download; the robotics and AI edition is presented here for viewing.</p>
-    </div>
-  </section>
-  <section class="cv-shell">
-    <div class="shell">
-      <div class="cv-tabs" role="tablist" aria-label="CV versions">
-        <button class="cv-tab active" type="button" role="tab" aria-selected="true" aria-controls="se-panel" data-cv-tab="se">Software Engineering CV</button>
-        <button class="cv-tab" type="button" role="tab" aria-selected="false" aria-controls="robotics-panel" data-cv-tab="robotics">Robotics & AI CV</button>
+      <div class="simple-header">
+        <h1 class="simple-title">Curriculum Vitae</h1>
+        <a class="button dark" href="/cv/Abdul_Rafi_CV.pdf" download>
+          Download CV <Icon name="download" size={17} />
+        </a>
       </div>
-      <div class="cv-panel active" id="se-panel" role="tabpanel" data-cv-panel="se">
-        <div class="cv-card">
-          <aside class="cv-sidebar"><p class="eyebrow">Profile 01</p><h2>Software Engineering</h2><p>Full-stack delivery, distributed systems, reliable APIs, data, and production ownership — with robotics experience as a differentiator.</p><a class="button dark" href="/cv/Abdul_Rafi_SE_CV.pdf" download>Download PDF <Icon name="download" size={17} /></a></aside>
-          <iframe class="cv-preview" src="/cv/Abdul_Rafi_SE_CV.pdf#view=FitH" title="Software Engineering CV preview"></iframe>
+      <div class="cv-browser-frame">
+        <div class="cv-browser-bar">
+          <div class="cv-browser-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="cv-browser-filename">Abdul_Rafi_CV.pdf</span>
         </div>
-      </div>
-      <div class="cv-panel" id="robotics-panel" role="tabpanel" data-cv-panel="robotics" hidden>
-        <div class="cv-card">
-          <aside class="cv-sidebar"><p class="eyebrow">Profile 02</p><h2>Robotics & AI</h2><p>Autonomous systems, ROS 2, navigation, perception, embedded hardware, and intelligent human–robot interfaces.</p><p>For a downloadable version tailored to software roles, use the Software Engineering CV.</p></aside>
-          <iframe class="cv-preview" data-src="/cv/Abdul_Rafi_Robotics_CV.pdf#view=FitH&toolbar=0" title="Robotics and AI CV preview"></iframe>
-        </div>
+        <iframe class="cv-viewer" src="/cv/Abdul_Rafi_CV.pdf" title="CV preview"></iframe>
       </div>
     </div>
   </section>
-  <script>
-    const tabs = document.querySelectorAll('[data-cv-tab]');
-    const panels = document.querySelectorAll('[data-cv-panel]');
-    tabs.forEach((tab) => tab.addEventListener('click', () => {
-      const target = tab.getAttribute('data-cv-tab');
-      tabs.forEach((item) => { const active = item === tab; item.classList.toggle('active', active); item.setAttribute('aria-selected', String(active)); });
-      panels.forEach((panel) => { const active = panel.getAttribute('data-cv-panel') === target; panel.classList.toggle('active', active); (panel as HTMLElement).hidden = !active; });
-      const iframe = document.querySelector(`[data-cv-panel="${target}"] iframe[data-src]`);
-      if (iframe && !iframe.getAttribute('src')) iframe.setAttribute('src', iframe.getAttribute('data-src') ?? '');
-    }));
-  </script>
 </BaseLayout>
