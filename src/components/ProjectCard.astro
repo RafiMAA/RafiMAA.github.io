@@ -1,0 +1,30 @@
+---
+import type { Project } from '../data/projects';
+import Icon from './Icon.astro';
+interface Props { project: Project; index: number; }
+const { project, index } = Astro.props;
+---
+<article class="project-card" data-project data-tags={project.tags.join(',')} data-tilt>
+  {project.image && (
+    <div class="project-media" data-lightbox-trigger={project.image} data-lightbox-title={project.title} data-lightbox-badge={`Project / ${project.label}`}>
+      <img src={project.image} alt={project.title} loading="lazy" class="project-img" />
+      <div class="project-media-overlay">
+        <span class="view-image-badge"><Icon name="external" size={12} /> Expand Photo</span>
+      </div>
+    </div>
+  )}
+  <div class="project-content">
+    <div class="project-meta">
+      <span class="project-index">PRJ/{String(index + 1).padStart(2,'0')}</span>
+      <span>{project.label}</span>
+    </div>
+    <h3 class="kinetic-title">{project.title}</h3>
+    <p>{project.description}</p>
+    <div class="chips">{project.stack.map((item) => <span class="chip">{item}</span>)}</div>
+    <div class="project-links">
+      {project.github && <a href={project.github} target="_blank" rel="noreferrer">Repository <Icon name="external" size={14} /></a>}
+      {project.report && <a href={project.report} target="_blank" rel="noreferrer">Report <Icon name="external" size={14} /></a>}
+    </div>
+  </div>
+</article>
+

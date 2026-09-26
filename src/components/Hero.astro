@@ -1,0 +1,60 @@
+---
+import Icon from './Icon.astro';
+const base = import.meta.env.BASE_URL;
+---
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-dark"></div>
+  <div class="hero-inner shell">
+    <div class="hero-copy">
+      <p class="eyebrow">Hi, I am</p>
+      <h1 id="hero-title" class="name-pop-title" aria-label="Abdul Rafi">
+        <span class="name-word"><span class="char-pop">A</span><span class="char-pop">b</span><span class="char-pop">d</span><span class="char-pop">u</span><span class="char-pop">l</span></span><span class="char-space">&nbsp;</span><span class="name-word"><span class="char-pop">R</span><span class="char-pop">a</span><span class="char-pop">f</span><span class="char-pop">i</span></span>
+      </h1>
+      <p class="role-line"><span data-role>Software Engineer</span> <span aria-hidden="true">↗</span></p>
+      <div class="hero-actions">
+        <a class="button dark" href="#projects">Explore projects <Icon name="arrow" size={17} /></a>
+        <a class="button light" href={`${base}cv`}>View CV</a>
+      </div>
+      <div class="socials" aria-label="Social links">
+        <a class="social-link" href="mailto:abdulr.23@cse.mrt.ac.lk" aria-label="Email Abdul"><Icon name="mail" /></a>
+        <a class="social-link" href="https://github.com/RafiMAA" target="_blank" rel="noreferrer" aria-label="GitHub profile"><Icon name="github" /></a>
+        <a class="social-link" href="https://linkedin.com/in/abdul-rafima" target="_blank" rel="noreferrer" aria-label="LinkedIn profile"><Icon name="linkedin" /></a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="portrait-glow"></div>
+      <div class="portrait-stage" data-tilt>
+        <div class="portrait-ring ring-one"></div>
+        <div class="portrait-ring ring-two"></div>
+        <span class="orbit-tag orbit-tag-1">ROS 2 Autonomous</span>
+        <span class="orbit-tag orbit-tag-2">Humanoid AI</span>
+        <span class="orbit-tag orbit-tag-3">Computer Vision</span>
+        <span class="orbit-tag orbit-tag-4">Full-Stack</span>
+        <img class="hero-portrait" src="/images/abdul-rafi-hero.png" alt="Abdul Rafi wearing a formal suit" width="1024" height="1536" fetchpriority="high" data-lightbox-trigger="/images/abdul-rafi-hero.png" data-lightbox-title="Abdul Rafi — Software, Robotics & AI Engineer" data-lightbox-badge="Portrait" />
+        <span class="portrait-label">Robotics · AI · Software</span>
+      </div>
+    </div>
+  </div>
+  <span class="scroll-cue">Scroll to explore ↓</span>
+</section>
+<script>
+  import { scrambleText } from '../scripts/dynamicFonts';
+
+  const roles = [
+    'Software Engineer',
+    'Robotics & Autonomous Systems',
+    'AI & Computer Vision',
+    'CSE Undergraduate'
+  ];
+  const node = document.querySelector('[data-role]') as HTMLElement | null;
+  let index = 0;
+
+  if (node && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.setInterval(() => {
+      index = (index + 1) % roles.length;
+      const nextRole = roles[index];
+      scrambleText(node, nextRole, 500);
+    }, 3200);
+  }
+</script>
+

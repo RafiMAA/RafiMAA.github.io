@@ -1,0 +1,332 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Icon from '../components/Icon.astro';
+import { projects } from '../data/projects';
+const base = import.meta.env.BASE_URL;
+
+const featured = projects.filter((project) => project.featured);
+const techStack = [
+  { category: 'FRONT END', items: [ { name: 'React', icon: 'react' }, { name: 'HTML5', icon: 'html' }, { name: 'CSS3', icon: 'css' }, { name: 'JavaScript', icon: 'js' }, { name: 'TypeScript', icon: 'ts' } ] },
+  { category: 'BACK END & OTHER LANGUAGES', items: [ { name: 'Node.js', icon: 'nodejs' }, { name: 'FastAPI', icon: 'fastapi' }, { name: 'Python', icon: 'python' }, { name: 'Java', icon: 'java' }, { name: 'C++', icon: 'cpp' }, { name: 'C', icon: 'c' } ] },
+  { category: 'DATABASE', items: [ { name: 'MySQL', icon: 'mysql' }, { name: 'PostgreSQL', icon: 'postgres' }, { name: 'MongoDB', icon: 'mongodb' } ] },
+  { category: 'ROBOTICS & OTHER', items: [ { name: 'ROS 2', icon: 'ros' }, { name: 'Raspberry Pi', icon: 'raspberrypi' }, { name: 'Arduino', icon: 'arduino' }, { name: 'OpenCV', icon: 'opencv' }, { name: 'Git', icon: 'git' }, { name: 'Docker', icon: 'docker' }, { name: 'Linux', icon: 'linux' } ] }
+];
+const achievements = [
+  { rank: 'Runner-up', event: 'IEEE INSL Idea Stage 2025', image: '/images/Achievements/IENSL Runnersup.png' },
+  { rank: 'Top 50', event: 'SPARK Competition' },
+  { rank: 'Finalist', event: 'YARL Geek Challenge S14', image: '/images/Achievements/Finalist Yarl Geek Challenge.png' },
+  { rank: 'Participant', event: 'Sri Lanka Robotics Challenge 2025', image: '/images/Achievements/SLRC_Participation.jpeg' },
+];
+const leadership = [
+  { role: 'Programme Committee', org: 'Hit the Ground Tournament', image: '/images/Leadership & Service/Hit The Ground.png' },
+  { role: 'Logistics Committee', org: 'SLIoT Competition', image: '/images/Leadership & Service/SLIOT.png' },
+  { role: 'Religious Coordinator', org: 'Majlis-Ul-Islam', image: '/images/Leadership & Service/Religious coordinator.png' },
+  { role: 'Logistics & Marketing', org: 'Career Fair 26', image: '/images/Leadership & Service/carrierfare.jpeg' },
+];
+---
+<BaseLayout>
+  <Hero />
+
+  <section class="section white" id="about">
+    <div class="shell">
+      <h2 class="about-main-title">About Me</h2>
+
+      <div class="about-layout-grid">
+        <div class="about-text-col">
+          <h3 class="about-greeting">Hello! I'm Abdul Rafi.</h3>
+          <p class="about-para">I'm a Computer Science & Engineering undergraduate at the University of Moratuwa, specializing in Integrated Computer Engineering, with a strong interest in software engineering, robotics, and AI & computer vision.</p>
+          <p class="about-para">I have hands-on experience building full-stack platforms, ROS 2 robotics systems, and computer-vision pipelines — from a production school management system to autonomous navigation on humanoid and mobile robots.</p>
+        </div>
+
+        <div class="about-photo-col">
+          <div class="about-photo-card" data-tilt data-lightbox-trigger="/images/abdul-rafi-about.png" data-lightbox-title="Abdul Rafi — Computer Science & Engineering" data-lightbox-badge="About">
+            <img src="/images/abdul-rafi-about.png" alt="Abdul Rafi delivering a keynote address" loading="lazy" class="about-portrait-img" />
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong data-count="7" data-suffix="">0</strong><span>Engineering Projects</span></div>
+        <div class="stat"><strong data-count="4" data-suffix="">0</strong><span>Achievements</span></div>
+        <div class="stat"><strong data-count="4" data-suffix="">0</strong><span>Leadership Roles</span></div>
+        <div class="stat"><strong data-count="2" data-suffix="+ yrs">0</strong><span>Experience</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section white" id="projects">
+    <div class="shell">
+      <SectionHeading center title="Projects" />
+      <div class="project-grid">{featured.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
+      <div class="projects-footer"><a class="button dark" href={`${base}projects`}>See all projects <Icon name="arrow" size={17} /></a></div>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <div class="shell">
+      <SectionHeading center title="Education" />
+      <div class="education-list">
+        <article class="education-item"><span class="date">Mar 2024 — Now</span><div><h3>University of Moratuwa</h3><p>B.Sc. Engineering (Hons.) in Computer Science & Engineering<br />Specialization in Integrated Computer Engineering</p></div><p class="result">CGPA 3.15 / 4.00<br />Sri Lanka</p></article>
+        <article class="education-item"><span class="date">2009 — 2023</span><div><h3>St. Thomas’ College, Matara</h3><p>G.C.E. Advanced Level — Physical Science Stream<br />Combined Mathematics, Physics & Chemistry</p></div><p class="result">3 A grades · Island Rank 206<br />Z-Score 2.5139</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tech-section" id="stack">
+    <div class="shell">
+      <h2 class="tech-section-title">Tech Stack & Software</h2>
+      <div class="tech-stack-wrap">
+        {techStack.map(section => (
+          <div class="tech-category">
+            <div class="category-header">
+              <h4 class="category-title">{section.category}</h4>
+              <div class="category-line"></div>
+            </div>
+            <div class="tech-grid">
+              {section.items.map(item => (
+                <div class="tech-card">
+                  <img src={`https://skillicons.dev/icons?i=${item.icon}&theme=light`} alt={item.name} loading="lazy" />
+                  <span>{item.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section white" id="recognition">
+    <div class="shell">
+      <!-- Achievements Horizontal Roll -->
+      <div class="roll-block" id="achievements">
+        <div class="roll-header-centered">
+          <SectionHeading center title="Achievements" />
+          <div class="roll-controls-row">
+            <button class="roll-btn roll-prev" data-roll-prev="achievements-roll" aria-label="Previous achievement">&larr;</button>
+            <button class="roll-btn roll-next" data-roll-next="achievements-roll" aria-label="Next achievement">&rarr;</button>
+          </div>
+        </div>
+        <div class="roll-track-wrap" id="achievements-roll" data-roll-track>
+          {achievements.map((item) => (
+            <div class:list={['roll-card', { 'has-image': !!item.image }]} data-tilt data-lightbox-trigger={item.image} data-lightbox-title={`${item.rank} — ${item.event}`} data-lightbox-badge={`Achievement / ${item.rank}`}>
+              <div class="roll-card-media">
+                {item.image ? (
+                  <img src={item.image} alt={item.event} loading="lazy" class="roll-card-img" />
+                ) : (
+                  <div class="roll-card-placeholder">
+                    <span class="placeholder-icon">★</span>
+                    <span class="placeholder-label">SPARK Competition</span>
+                  </div>
+                )}
+                <div class="roll-media-overlay">
+                  <span class="roll-view-badge">Expand Photo</span>
+                </div>
+              </div>
+              <div class="roll-card-body">
+                <span class="roll-badge">{item.rank}</span>
+                <h4 class="roll-card-title kinetic-title">{item.event}</h4>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Leadership & Service Horizontal Roll -->
+      <div class="roll-block" id="leadership" style="margin-top: 84px;">
+        <div class="roll-header-centered">
+          <SectionHeading center title="Leadership & Service" />
+          <div class="roll-controls-row">
+            <button class="roll-btn roll-prev" data-roll-prev="leadership-roll" aria-label="Previous leadership role">&larr;</button>
+            <button class="roll-btn roll-next" data-roll-next="leadership-roll" aria-label="Next leadership role">&rarr;</button>
+          </div>
+        </div>
+        <div class="roll-track-wrap" id="leadership-roll" data-roll-track>
+          {leadership.map((item) => (
+            <div class:list={['roll-card', { 'has-image': !!item.image }]} data-tilt data-lightbox-trigger={item.image} data-lightbox-title={`${item.role} — ${item.org}`} data-lightbox-badge={`Leadership / ${item.role}`}>
+              <div class="roll-card-media">
+                {item.image ? (
+                  <img src={item.image} alt={item.org} loading="lazy" class="roll-card-img" />
+                ) : (
+                  <div class="roll-card-placeholder">
+                    <span class="placeholder-icon">✦</span>
+                  </div>
+                )}
+                <div class="roll-media-overlay">
+                  <span class="roll-view-badge">Expand Photo</span>
+                </div>
+              </div>
+              <div class="roll-card-body">
+                <span class="roll-badge">{item.role}</span>
+                <h4 class="roll-card-title kinetic-title">{item.org}</h4>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Horizontal Roll Control & Drag Script
+    document.querySelectorAll('[data-roll-track]').forEach((trackEl) => {
+      const track = trackEl as HTMLElement;
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        track.classList.add('dragging');
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+      });
+
+      track.addEventListener('mouseleave', () => {
+        isDown = false;
+        track.classList.remove('dragging');
+      });
+
+      track.addEventListener('mouseup', () => {
+        isDown = false;
+        track.classList.remove('dragging');
+      });
+
+      track.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.8;
+        track.scrollLeft = scrollLeft - walk;
+      });
+    });
+
+    document.querySelectorAll('[data-roll-prev]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-roll-prev');
+        const track = document.getElementById(targetId ?? '');
+        if (track) {
+          track.scrollBy({ left: -360, behavior: 'smooth' });
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-roll-next]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-roll-next');
+        const track = document.getElementById(targetId ?? '');
+        if (track) {
+          track.scrollBy({ left: 360, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Stats Counter Animation
+    const counterElements = document.querySelectorAll<HTMLElement>('[data-count]');
+    if (counterElements.length > 0) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              const target = parseInt(el.getAttribute('data-count') || '0', 10);
+              const suffix = el.getAttribute('data-suffix') || '';
+              const duration = 1400;
+              const startTime = performance.now();
+
+              const step = (now: number) => {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(easeOut * target);
+                el.textContent = `${current}${suffix}`;
+                if (progress < 1) {
+                  requestAnimationFrame(step);
+                } else {
+                  el.textContent = `${target}${suffix}`;
+                }
+              };
+              requestAnimationFrame(step);
+              observer.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      counterElements.forEach((el) => observer.observe(el));
+    }
+  </script>
+
+
+  <section class="contact-section" id="contact">
+    <div class="shell">
+      <div class="connect-box">
+        <h2 class="connect-main-title">Let's Connect</h2>
+        <p class="connect-sub-title">Open to opportunities, collaborations, and conversations. Reach out via any of the channels below or send me a direct message.</p>
+
+        <div class="connect-grid">
+          <!-- Left Column: Reach Out -->
+          <div class="connect-col-left">
+            <div class="connect-section-tag">
+              <span class="tag-line"></span>
+              <span class="tag-text">REACH OUT</span>
+            </div>
+            <div class="connect-email-group">
+              <span class="connect-label">EMAIL</span>
+              <a href="mailto:abdulr.23@cse.mrt.ac.lk" class="connect-email-link">abdulr.23@cse.mrt.ac.lk</a>
+            </div>
+            <p class="connect-location"><span class="loc-diamond">◆</span> Based in Sri Lanka</p>
+          </div>
+
+          <!-- Right Column: Find Me Online -->
+          <div class="connect-col-right">
+            <div class="connect-section-tag">
+              <span class="tag-line"></span>
+              <span class="tag-text">FIND ME ONLINE</span>
+            </div>
+            <div class="online-social-grid">
+              <a href="mailto:abdulr.23@cse.mrt.ac.lk" class="online-card">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path fill="#4285F4" d="M1.5 17.5V7.5C1.5 6.395 2.395 5.5 3.5 5.5H5.5V17.5H1.5Z"/>
+                  <path fill="#34A853" d="M18.5 5.5H20.5C21.605 5.5 22.5 6.395 22.5 7.5V18.5H18.5V5.5Z"/>
+                  <path fill="#EA4335" d="M5.5 5.5L12 11L18.5 5.5V17.5H15.5V9.5L12 12.5L8.5 9.5V17.5H5.5V5.5Z"/>
+                  <path fill="#FBBC04" d="M5.5 5.5L12 11V12.5L5.5 7.4V5.5Z"/>
+                </svg>
+                <span>Gmail</span>
+              </a>
+
+              <a href="https://github.com/RafiMAA" target="_blank" rel="noreferrer" class="online-card">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#24292e">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+                <span>Github</span>
+              </a>
+
+              <a href="https://linkedin.com/in/abdul-rafima" target="_blank" rel="noreferrer" class="online-card">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#0A66C2">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                </svg>
+                <span>Linkedin</span>
+              </a>
+
+              <a href="https://www.reddit.com/user/HostSpecific4313/" target="_blank" rel="noreferrer" class="online-card">
+                <svg width="22" height="22" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" fill="#FF4500"/>
+                  <path d="M16.67 13.12c.1.25.15.51.15.78 0 2.03-2.16 3.68-4.82 3.68s-4.82-1.65-4.82-3.68c0-.27.05-.53.15-.78-.58-.32-.97-.93-.97-1.62 0-1.02.83-1.85 1.85-1.85.49 0 .94.2 1.27.52 1.04-.69 2.41-1.13 3.91-1.18l.8-3.76 2.62.56c.06-.49.48-.87.99-.87 1.02 0 1.85.83 1.85 1.85 0 1.02-.83 1.85-1.85 1.85-.92 0-1.68-.68-1.82-1.57l-2.09-.45-.61 2.87c1.53.04 2.92.48 3.97 1.18.33-.33.78-.53 1.27-.53 1.02 0 1.85.83 1.85 1.85 0 .69-.39 1.3-.97 1.62zM10.25 12.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm3.5 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-4.11 3.25c.34.34 1.15.5 2.36.5s2.02-.16 2.36-.5c.1-.1.1-.26 0-.36s-.26-.1-.36 0c-.26.26-.95.36-2 .36s-1.74-.1-2-.36c-.1-.1-.26-.1-.36 0s-.1.26 0 .36z" fill="#FFFFFF"/>
+                </svg>
+                <span>Reddit</span>
+              </a>
+            </div>
+
+            <p class="online-prompt">Have a project in mind, or just want to say hi?</p>
+            <a href="mailto:abdulr.23@cse.mrt.ac.lk" class="send-msg-btn">Send a Message <Icon name="arrow" size={14} /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

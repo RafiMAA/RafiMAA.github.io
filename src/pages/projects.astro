@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+---
+<BaseLayout title="Projects — Abdul Rafi" description="Robotics, AI, full-stack, and systems projects by Abdul Rafi.">
+  <section class="page-hero">
+    <div class="shell">
+      <p class="eyebrow">Selected engineering archive · 2024—Now</p>
+      <h1>Projects that move.</h1>
+      <p>From robots navigating uncertain environments to software serving real users. Filter the archive by the kind of problem being solved.</p>
+    </div>
+  </section>
+  <section class="all-projects">
+    <div class="shell">
+      <div class="filter-bar" aria-label="Filter projects">
+        {['All', 'Robotics', 'AI/CV', 'Full-Stack', 'Systems'].map((tag, index) => <button class:list={['filter-button', { active: index === 0 }]} type="button" data-filter={tag}>{tag}</button>)}
+      </div>
+      <div class="project-grid">{projects.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
+    </div>
+  </section>
+  <script>
+    const buttons = document.querySelectorAll('[data-filter]');
+    const cards = document.querySelectorAll('[data-project]');
+    buttons.forEach((button) => button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+      buttons.forEach((item) => item.classList.toggle('active', item === button));
+      cards.forEach((card) => {
+        const tags = card.getAttribute('data-tags')?.split(',') ?? [];
+        (card as HTMLElement).style.display = filter === 'All' || tags.includes(filter ?? '') ? '' : 'none';
+      });
+    }));
+  </script>
+</BaseLayout>
