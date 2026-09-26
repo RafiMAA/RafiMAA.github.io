@@ -7,7 +7,7 @@ import Icon from '../components/Icon.astro';
 import { projects } from '../data/projects';
 
 
-const featured = projects.filter((project) => project.featured);
+const featured = projects.filter((project) => project.featured).slice(0, 4);
 const techStack = [
   { category: 'FRONT END', items: [ { name: 'React', icon: 'react' }, { name: 'HTML5', icon: 'html' }, { name: 'CSS3', icon: 'css' }, { name: 'JavaScript', icon: 'js' }, { name: 'TypeScript', icon: 'ts' } ] },
   { category: 'BACK END & OTHER LANGUAGES', items: [ { name: 'Node.js', icon: 'nodejs' }, { name: 'FastAPI', icon: 'fastapi' }, { name: 'Python', icon: 'python' }, { name: 'Java', icon: 'java' }, { name: 'C++', icon: 'cpp' }, { name: 'C', icon: 'c' } ] },
