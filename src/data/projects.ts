@@ -55,7 +55,7 @@ export const projects: Project[] = [
     image: '/images/Projects/Unitree G1.jpeg',
     featured: true,
     github: 'https://github.com/RafiMAA/Unitree_G1_EDU_Robot',
-    report: 'https://github.com/RafiMAA/Unitree_G1_EDU_Robot/blob/main/docs/paper/g1_paper.pdf',
+    report: 'https://github.com/RafiMAA/Unitree_G1_EDU_Robot/blob/f5134e8c5424f13ccc09694337266d48714b3adb/docs/report/g1_report.pdf',
   },
   {
     id: 'bathymetric-drone',
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     image: '/images/Projects/Drone.jpeg',
     featured: true,
     github: 'https://github.com/RafiMAA/ROS2_Autonomous_Bathymetric_Survey_System_with_Ardupilot',
-    report: 'https://github.com/RafiMAA/ROS2_Autonomous_Bathymetric_Survey_System_with_Ardupilot/blob/main/docs/paper/bathymetric_survey_paper.pdf',
+    report: 'https://github.com/RafiMAA/ROS2_Autonomous_Bathymetric_Survey_System_with_Ardupilot/blob/99caa06d9c093e2361772368eddefa4fb9d4c2b5/docs/report/bathymetric_survey_paper.pdf',
   },
   {
     id: 'qbot-navigation',
@@ -79,7 +79,7 @@ export const projects: Project[] = [
     image: '/images/Projects/Qbot.jpeg',
     featured: true,
     github: 'https://github.com/RafiMAA/Qbot_mapping_and_navigating_to_the_goal',
-    report: 'https://github.com/RafiMAA/Qbot_mapping_and_navigating_to_the_goal/blob/main/docs/paper/qbot_paper.pdf',
+    report: 'https://github.com/RafiMAA/Qbot_mapping_and_navigating_to_the_goal/blob/be72d01b4c70d59011fe59a467bfc52ddcf8f1c3/docs/report/qbot_paper.pdf',
   },
   {
     id: 'nano-processor',
