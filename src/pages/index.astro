@@ -9,10 +9,12 @@ import { projects } from '../data/projects';
 
 const featured = projects.filter((project) => project.featured).slice(0, 4);
 const techStack = [
-  { category: 'FRONT END', items: [ { name: 'React', icon: 'react' }, { name: 'HTML5', icon: 'html' }, { name: 'CSS3', icon: 'css' }, { name: 'JavaScript', icon: 'js' }, { name: 'TypeScript', icon: 'ts' } ] },
-  { category: 'BACK END & OTHER LANGUAGES', items: [ { name: 'Node.js', icon: 'nodejs' }, { name: 'FastAPI', icon: 'fastapi' }, { name: 'Python', icon: 'python' }, { name: 'Java', icon: 'java' }, { name: 'C++', icon: 'cpp' }, { name: 'C', icon: 'c' } ] },
-  { category: 'DATABASE', items: [ { name: 'MySQL', icon: 'mysql' }, { name: 'PostgreSQL', icon: 'postgres' }, { name: 'MongoDB', icon: 'mongodb' } ] },
-  { category: 'ROBOTICS & OTHER', items: [ { name: 'ROS 2', icon: 'ros' }, { name: 'Raspberry Pi', icon: 'raspberrypi' }, { name: 'Arduino', icon: 'arduino' }, { name: 'OpenCV', icon: 'opencv' }, { name: 'Git', icon: 'git' }, { name: 'Docker', icon: 'docker' }, { name: 'Linux', icon: 'linux' } ] }
+  { category: 'FRONT END', items: [ { name: 'React', icon: 'react' }, { name: 'React Native', icon: 'react' }, { name: 'HTML5', icon: 'html' }, { name: 'CSS3', icon: 'css' }, { name: 'JavaScript', icon: 'js' }, { name: 'TypeScript', icon: 'ts' } ] },
+  { category: 'BACK END & LANGUAGES', items: [ { name: 'Node.js', icon: 'nodejs' }, { name: 'Express.js', icon: 'express' }, { name: 'FastAPI', icon: 'fastapi' }, { name: 'Python', icon: 'python' }, { name: 'Java', icon: 'java' }, { name: 'C++', icon: 'cpp' }, { name: 'C', icon: 'c' } ] },
+  { category: 'DATABASE', items: [ { name: 'MySQL', icon: 'mysql' }, { name: 'PostgreSQL', icon: 'postgres' }, { name: 'MongoDB', icon: 'mongodb' }, { name: 'Supabase', icon: 'supabase' } ] },
+  { category: 'DISTRIBUTED SYSTEMS & DEVOPS', items: [ { name: 'Kafka', icon: 'kafka' }, { name: 'MQTT', mark: 'MQTT' }, { name: 'HiveMQ', mark: 'HQ' }, { name: 'Redis', icon: 'redis' }, { name: 'Kubernetes', icon: 'kubernetes' }, { name: 'Docker', icon: 'docker' }, { name: 'Git', icon: 'git' }, { name: 'Linux', icon: 'linux' } ] },
+  { category: 'AI & COMPUTER VISION', items: [ { name: 'OpenCV', icon: 'opencv' }, { name: 'YOLO', mark: 'YOLO' }, { name: 'LangChain', mark: 'LC' }, { name: 'RAG', mark: 'RAG' }, { name: 'Tesseract OCR', mark: 'OCR' } ] },
+  { category: 'ROBOTICS & EMBEDDED SYSTEMS', items: [ { name: 'ROS 2', icon: 'ros' }, { name: 'Nav2', mark: 'N2' }, { name: 'SLAM', mark: 'SLAM' }, { name: 'ArduPilot', mark: 'AP' }, { name: 'Gazebo', mark: 'GZ' }, { name: 'Arduino', icon: 'arduino' }, { name: 'ESP32', mark: 'E32' }, { name: 'STM32', mark: 'S32' }, { name: 'FPGA', mark: 'FPGA' }, { name: 'VHDL', mark: 'VHDL' } ] }
 ];
 const achievements = [
   { rank: 'Runner-up', event: 'IEEE INSL Idea Stage 2025', image: '/images/Achievements/IENSL Runnersup.png' },
@@ -88,7 +90,9 @@ const leadership = [
             <div class="tech-grid">
               {section.items.map(item => (
                 <div class="tech-card">
-                  <img src={`https://skillicons.dev/icons?i=${item.icon}&theme=light`} alt={item.name} loading="lazy" />
+                  {'icon' in item
+                    ? <img src={`https://skillicons.dev/icons?i=${item.icon}&theme=light`} alt={item.name} loading="lazy" />
+                    : <span class="tech-mark" aria-hidden="true">{item.mark}</span>}
                   <span>{item.name}</span>
                 </div>
               ))}
