@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">FPGA</title>
+  <rect width="64" height="64" rx="15" fill="#FFF7ED"/>
+  <rect x="17" y="17" width="30" height="30" rx="5" fill="#F97316"/>
+  <path d="M24 24h16v16H24zM11 23h6M11 32h6M11 41h6M47 23h6M47 32h6M47 41h6M23 11v6M32 11v6M41 11v6M23 47v6M32 47v6M41 47v6" fill="none" stroke="#7C2D12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="28" cy="28" r="2" fill="#F97316"/>
+  <circle cx="36" cy="28" r="2" fill="#F97316"/>
+  <circle cx="28" cy="36" r="2" fill="#F97316"/>
+  <circle cx="36" cy="36" r="2" fill="#F97316"/>
+</svg>
